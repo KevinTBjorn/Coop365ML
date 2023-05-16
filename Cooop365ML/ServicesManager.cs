@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cooop365ML.Services;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,7 @@ namespace Cooop365ML
     {
         public static MauiAppBuilder UseCustomServices(this MauiAppBuilder builder)
         {
-
+            builder.Services.AddSingleton<RoboflowService>();
 
             return builder;
         }
