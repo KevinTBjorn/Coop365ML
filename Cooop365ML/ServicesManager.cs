@@ -12,7 +12,7 @@ namespace Cooop365ML
     {
         public static MauiAppBuilder UseCustomServices(this MauiAppBuilder builder)
         {
-            builder.Services.AddSingleton<RoboflowService>();
+            builder.Services.AddSingleton<RoboFlowService>();
 
             return builder;
         }

@@ -8,7 +8,7 @@ using Cooop365ML.Models;
 
 namespace Cooop365ML.Services
 {
-    public class RoboflowService
+    public class RoboFlowService
     {
         public static string GetPrediction(string picture)
         {
