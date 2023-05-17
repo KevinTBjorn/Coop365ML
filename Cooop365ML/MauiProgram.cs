@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Camera.MAUI;
 
 namespace Cooop365ML;
 
@@ -9,6 +10,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseMauiCameraView()
 			.UseCustomServices()
 			.ConfigureFonts(fonts =>
 			{
