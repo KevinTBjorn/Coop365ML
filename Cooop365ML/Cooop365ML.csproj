@@ -55,6 +55,8 @@
 
 	<ItemGroup>
 	  <Folder Include="SnapShot\" />
+	  <Folder Include="ViewModels\" />
+	  <Folder Include="Views\" />
 	</ItemGroup>
 
 </Project>
