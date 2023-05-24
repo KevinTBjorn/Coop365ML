@@ -12,7 +12,7 @@ namespace Cooop365ML.Services
     {
         public static string GetPrediction(string picture)
         {
-            byte[] imageArray = System.IO.File.ReadAllBytes(@"YOUR_IMAGE.jpg");
+            byte[] imageArray = File.ReadAllBytes($"{FileSystem.Current.CacheDirectory}/{picture}");
             string encoded = Convert.ToBase64String(imageArray);
             byte[] data = Encoding.ASCII.GetBytes(encoded);
             string api_key = "ZYKSxtBW9niTQwA5Gpio"; // Your API Key
