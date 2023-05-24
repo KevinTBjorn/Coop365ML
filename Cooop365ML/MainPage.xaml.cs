@@ -5,23 +5,23 @@ using System.IO;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    int count = 0;
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    public MainPage()
+    {
+        InitializeComponent();
+    }
 
-	private void cameraView_CamerasLoaded(object sender, EventArgs e)
-	{
-		cameraView.Camera = cameraView.Cameras.First();
+    private void cameraView_CamerasLoaded(object sender, EventArgs e)
+    {
+        cameraView.Camera = cameraView.Cameras.First();
 
-		MainThread.BeginInvokeOnMainThread(async () =>
-		{
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
             await cameraView.StopCameraAsync();
             await cameraView.StartCameraAsync();
-		});
-	}
+        });
+    }
 
 	private async void Button_Clicked(object sender, EventArgs e)
 	{
