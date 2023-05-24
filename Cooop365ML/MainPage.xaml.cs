@@ -1,24 +1,30 @@
 ﻿namespace Cooop365ML;
 
+using Cooop365ML.Services;
+using System.IO;
+
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    public MainPage()
+    {
+        InitializeComponent();
+    }
 
-	public MainPage()
+    private void cameraView_CamerasLoaded(object sender, EventArgs e)
+    {
+        cameraView.Camera = cameraView.Cameras.First();
+
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            await cameraView.StopCameraAsync();
+            await cameraView.StartCameraAsync();
+        });
+    }
+
+	private async void Button_Clicked(object sender, EventArgs e)
 	{
-		InitializeComponent();
-	}
-
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        string imageName = "coop365image.png";
+        await cameraView.SaveSnapShot(Camera.MAUI.ImageFormat.PNG, @$"{FileSystem.Current.CacheDirectory}/{imageName}");
+        RoboFlowService.GetPrediction(imageName);
+    }
 }
-

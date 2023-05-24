@@ -49,6 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="SnapShot\**" />
+	  <Compile Remove="SnapShot\**" />
+	  <EmbeddedResource Remove="SnapShot\**" />
+	  <MauiCss Remove="SnapShot\**" />
+	  <MauiXaml Remove="SnapShot\**" />
+	  <None Remove="SnapShot\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Camera.MAUI" Version="1.4.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
