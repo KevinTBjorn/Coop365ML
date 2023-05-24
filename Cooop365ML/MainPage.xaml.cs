@@ -1,6 +1,6 @@
 ﻿namespace Cooop365ML;
 
-using Microsoft.Maui.Controls.PlatformConfiguration;
+using Cooop365ML.Services;
 using System.IO;
 
 public partial class MainPage : ContentPage
@@ -25,17 +25,20 @@ public partial class MainPage : ContentPage
 
 	private async void Button_Clicked(object sender, EventArgs e)
 	{
-        var stream = await cameraView.TakePhotoAsync();
+        string imageName = "coop365image.png";
+
+        /*var stream = await cameraView.TakePhotoAsync();
         if (stream != null)
         {
-            var result = ImageSource.FromStream(() => stream);
-            byte[] imageArray = await ConvertImageSourceToBytesAsync(result);
+            //var result = ImageSource.FromStream(() => stream);
+            //byte[] imageArray = await ConvertImageSourceToBytesAsync(result);
 
-            //Convert byte array to image
-            string bytesToString = Convert.ToBase64String(imageArray);
-            string stringToImage = string.Format("data:image/png;base64,{0}", bytesToString);
-            myImage.Source = stringToImage;
-        }
+            ////Convert byte array to image
+            //string bytesToString = Convert.ToBase64String(imageArray);
+            //string stringToImage = string.Format("data:image/png;base64,{0}", bytesToString);
+        }*/
+        await cameraView.SaveSnapShot(Camera.MAUI.ImageFormat.PNG, @$"{FileSystem.Current.CacheDirectory}/{imageName}");
+        RoboFlowService.GetPrediction(imageName);
     }
 
     public async Task<byte[]> ConvertImageSourceToBytesAsync(ImageSource imageSource)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -12,9 +13,9 @@ namespace Cooop365ML.Services
     {
         public static string GetPrediction(string picture)
         {
-            byte[] imageArray = System.IO.File.ReadAllBytes(@"YOUR_IMAGE.jpg");
+            byte[] imageArray = System.IO.File.ReadAllBytes($"{FileSystem.Current.CacheDirectory}/{picture}");
             string encoded = Convert.ToBase64String(imageArray);
-            byte[] data = Encoding.ASCII.GetBytes(encoded);
+            byte[] data = Encoding.ASCII.GetBytes(picture);
             string api_key = "ZYKSxtBW9niTQwA5Gpio"; // Your API Key
             string model_endpoint = "fruits_detector-w7cxo/1"; // Set model endpoint
 
@@ -54,6 +55,8 @@ namespace Cooop365ML.Services
                     }
                 }
             }
+
+            Debug.WriteLine(responseContent);
 
             return responseContent;
         }
