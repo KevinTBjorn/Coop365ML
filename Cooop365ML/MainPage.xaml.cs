@@ -1,5 +1,8 @@
 ﻿namespace Cooop365ML;
 
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using System.IO;
+
 public partial class MainPage : ContentPage
 {
 	int count = 0;
@@ -20,15 +23,28 @@ public partial class MainPage : ContentPage
 		});
 	}
 
-	private void Button_Clicked(object sender, EventArgs e)
+	private async void Button_Clicked(object sender, EventArgs e)
 	{
-		string snapFilePath = @"../Cooop365ML/SnapShot";
-		string fileName = "snapshot.png";
-		string filePath = Path.Combine(snapFilePath, fileName);
-        cameraView.SaveSnapShot(Camera.MAUI.ImageFormat.PNG, filePath); //Virker ikke
+        var stream = await cameraView.TakePhotoAsync();
+        if (stream != null)
+        {
+            var result = ImageSource.FromStream(() => stream);
+            byte[] imageArray = await ConvertImageSourceToBytesAsync(result);
 
-        //myImage.Source = ImageSource.FromFile(filePath);
-        myImage.Source = cameraView.GetSnapShot(Camera.MAUI.ImageFormat.PNG); //Skal (når den er klar) hentes fra ML modellen
-	}
+            //Convert byte array to image
+            string bytesToString = Convert.ToBase64String(imageArray);
+            string stringToImage = string.Format("data:image/png;base64,{0}", bytesToString);
+            myImage.Source = stringToImage;
+        }
+    }
+
+    public async Task<byte[]> ConvertImageSourceToBytesAsync(ImageSource imageSource)
+    {
+        Stream stream = await ((StreamImageSource)imageSource).Stream(CancellationToken.None);
+        byte[] bytesAvailable = new byte[stream.Length];
+        stream.Read(bytesAvailable, 0, bytesAvailable.Length);
+
+        return bytesAvailable;
+    }
 }
 
