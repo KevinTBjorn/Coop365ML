@@ -13,9 +13,9 @@ namespace Cooop365ML.Services
     {
         public static string GetPrediction(string picture)
         {
-            byte[] imageArray = System.IO.File.ReadAllBytes($"{FileSystem.Current.CacheDirectory}/{picture}");
+            byte[] imageArray = File.ReadAllBytes($"{FileSystem.Current.CacheDirectory}/{picture}");
             string encoded = Convert.ToBase64String(imageArray);
-            byte[] data = Encoding.ASCII.GetBytes(picture);
+            byte[] data = Encoding.ASCII.GetBytes(encoded);
             string api_key = "ZYKSxtBW9niTQwA5Gpio"; // Your API Key
             string model_endpoint = "fruits_detector-w7cxo/1"; // Set model endpoint
 
@@ -55,8 +55,6 @@ namespace Cooop365ML.Services
                     }
                 }
             }
-
-            Debug.WriteLine(responseContent);
 
             return responseContent;
         }
