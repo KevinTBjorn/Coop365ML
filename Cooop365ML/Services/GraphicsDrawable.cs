@@ -23,7 +23,6 @@ namespace Cooop365ML.Services
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            string imageName = "coop365image.png";
             Microsoft.Maui.Graphics.IImage image;
             Assembly assembly = GetType().GetTypeInfo().Assembly;
             using (Stream stream = assembly.GetManifestResourceStream("Cooop365ML.Resources.Images.able.jpg"))
@@ -40,7 +39,7 @@ namespace Cooop365ML.Services
                 {
                     foreach (var item in Data.predictions)
                     {
-                        int xPos = Convert.ToInt16(100 + (item.x - (item.width / 2))/10);
+                        int xPos = Convert.ToInt16(100 + (item.x - (item.width / 2)) / 10);
                         int yPos = Convert.ToInt16((item.y - (item.height / 2)) / 10);
                         int id = 0;
                         switch (item.@class)
@@ -70,7 +69,7 @@ namespace Cooop365ML.Services
                                 break;
                         }
                         canvas.StrokeSize = 6;
-                        canvas.DrawRectangle(xPos, yPos, Convert.ToInt16(item.width / 10), Convert.ToInt16(item.height / 10));
+                        canvas.DrawRectangle(xPos, yPos, Convert.ToInt16(item.width), Convert.ToInt16(item.height));
 
                         canvas.FontSize = 16;
                         canvas.DrawString(item.@class + " - " + id, xPos, yPos - 5, HorizontalAlignment.Left);
