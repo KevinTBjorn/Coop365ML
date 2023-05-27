@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
-             xmlns:drawable="clr-namespace:Cooop365ML"
+             xmlns:drawables="clr-namespace:Cooop365ML.Services"
              x:Class="Cooop365ML.MainPage">
     <ContentPage.Resources>
-        <drawable:GraphicsDrawable x:Key="drawable" />
+        <drawables:GraphicsDrawable x:Key="drawable" />
     </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout
@@ -21,7 +21,7 @@
             <Button Text="Take picture" Clicked="Button_Clicked"/>
             <Image x:Name="myImage" WidthRequest="300" HeightRequest="200"></Image>
 
-            <GraphicsView  Drawable="{StaticResource drawable}"
+            <GraphicsView  Drawable="{StaticResource drawable}" x:Name="pictureGraphicsView"
                 HeightRequest="500"
                 WidthRequest="500" />
 
