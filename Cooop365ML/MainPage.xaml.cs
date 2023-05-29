@@ -25,6 +25,7 @@ public partial class MainPage : ContentPage
 
         MainThread.BeginInvokeOnMainThread(async () =>
         {
+            //Stoppes først så det også virker på Samsung telefoner
             await cameraView.StopCameraAsync();
             await cameraView.StartCameraAsync();
         });

@@ -21,10 +21,6 @@
             <Button Text="Take picture" Clicked="Button_Clicked"/>
             <ListView x:Name="fruitsList" />
 
-            <!--<GraphicsView Drawable="{StaticResource drawable}" x:Name="pictureGraphicsView"
-                HeightRequest="500"
-                WidthRequest="500" />-->
-
     </VerticalStackLayout>
     </ScrollView>
 
