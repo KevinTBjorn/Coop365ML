@@ -7,21 +7,25 @@
     <ContentPage.Resources>
         <drawables:GraphicsDrawable x:Key="drawable" />
     </ContentPage.Resources>
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Fill"
-            HorizontalOptions="Fill">
+    
+    <Grid Margin="20">
+        <ScrollView>
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill">
             
 
-            <cv:CameraView x:Name="cameraView" WidthRequest="300" HeightRequest="200"
+                <cv:CameraView x:Name="cameraView" WidthRequest="300" HeightRequest="200"
                            CamerasLoaded="cameraView_CamerasLoaded"/>
 
-            <Button Text="Take picture" Clicked="Button_Clicked"/>
-            <ListView x:Name="fruitsList" />
+                <ListView x:Name="fruitsList" />
+            
 
-    </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button CornerRadius="60" HeightRequest="110" WidthRequest="110" BorderWidth="2" Margin="0,550,0,0" Text="Take picture" Clicked="Button_Clicked"/>
+    </Grid>
 
 </ContentPage>
