@@ -15,7 +15,7 @@
             <cv:CameraView x:Name="cameraView" WidthRequest="300" HeightRequest="200"
                            CamerasLoaded="cameraView_CamerasLoaded"/>
 
-            <Button Text="Take picture" Clicked="Button_Clicked"/>
+            <Button CornerRadius="60" HeightRequest="110" WidthRequest="110" BorderWidth="2" Margin="0,150,0,0" Text="Take picture" Clicked="Button_Clicked"/>
             <Image x:Name="myImage" WidthRequest="300" HeightRequest="200"></Image>
 
         </VerticalStackLayout>
