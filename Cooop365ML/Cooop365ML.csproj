@@ -58,8 +58,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\able.jpg" />
+	  <MauiImage Remove="Resources\Images\windows.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\able.jpg" />
+	  <None Remove="Resources\Images\able_not_embedded.jpg" />
+	  <None Remove="Resources\Images\windows.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Images\able.jpg" />
+	  <EmbeddedResource Include="Resources\Images\windows.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Camera.MAUI" Version="1.4.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

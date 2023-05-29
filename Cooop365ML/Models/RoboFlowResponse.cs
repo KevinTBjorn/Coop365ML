@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ namespace Cooop365ML.Models
     {
         public double x { get; set; }
         public double y { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
+        public double width { get; set; }
+        public double height { get; set; }
         public double confidence { get; set; }
         public string @class { get; set; }
     }
