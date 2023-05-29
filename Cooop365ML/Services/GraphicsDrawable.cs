@@ -46,22 +46,27 @@ namespace Cooop365ML.Services
                         {
                             case "Apple":
                                 canvas.StrokeColor = Colors.Red;
+                                canvas.FontColor = Colors.Red;
                                 id = Convert.ToInt16(Fruits.FruitID.Apple);
                                 break;
                             case "Pear":
                                 canvas.StrokeColor = Colors.Blue;
+                                canvas.FontColor = Colors.Blue;
                                 id = Convert.ToInt16(Fruits.FruitID.Pear);
                                 break;
                             case "Banana":
                                 canvas.StrokeColor = Colors.Yellow;
+                                canvas.FontColor = Colors.Yellow;
                                 id = Convert.ToInt16(Fruits.FruitID.Banana);
                                 break;
                             case "Kiwi":
                                 canvas.StrokeColor = Colors.DarkGreen;
+                                canvas.FontColor = Colors.DarkGreen;
                                 id = Convert.ToInt16(Fruits.FruitID.Kiwi);
                                 break; 
                             case "Cutted_Kiwi":
                                 canvas.StrokeColor = Colors.Green;
+                                canvas.FontColor = Colors.Green;
                                 id = Convert.ToInt16(Fruits.FruitID.Cutted_Kiwi);
                                 break;
                             default:
@@ -69,7 +74,7 @@ namespace Cooop365ML.Services
                                 break;
                         }
                         canvas.StrokeSize = 6;
-                        canvas.DrawRectangle(xPos, yPos, Convert.ToInt16(item.width), Convert.ToInt16(item.height));
+                        canvas.DrawRectangle(xPos, yPos, Convert.ToInt16(item.width / 10), Convert.ToInt16(item.height / 10));
 
                         canvas.FontSize = 16;
                         canvas.DrawString(item.@class + " - " + id, xPos, yPos - 5, HorizontalAlignment.Left);
