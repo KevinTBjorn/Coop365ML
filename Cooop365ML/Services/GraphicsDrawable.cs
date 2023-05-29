@@ -1,5 +1,4 @@
 ﻿using Cooop365ML.Models;
-using Microsoft.Maui.Graphics.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;

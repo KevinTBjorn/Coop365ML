@@ -19,11 +19,11 @@
                            CamerasLoaded="cameraView_CamerasLoaded"/>
 
             <Button Text="Take picture" Clicked="Button_Clicked"/>
-            <Image x:Name="myImage" WidthRequest="300" HeightRequest="200"></Image>
+            <ListView x:Name="fruitsList" />
 
-            <GraphicsView  Drawable="{StaticResource drawable}" x:Name="pictureGraphicsView"
+            <!--<GraphicsView Drawable="{StaticResource drawable}" x:Name="pictureGraphicsView"
                 HeightRequest="500"
-                WidthRequest="500" />
+                WidthRequest="500" />-->
 
     </VerticalStackLayout>
     </ScrollView>

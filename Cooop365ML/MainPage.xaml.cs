@@ -33,13 +33,39 @@ public partial class MainPage : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
 	{
+        List<string> combinedPredictions = new List<string>();
+        fruitsList.ItemsSource = null;
         string imageName = "coop365image.png";
         await cameraView.SaveSnapShot(Camera.MAUI.ImageFormat.PNG, @$"{FileSystem.Current.CacheDirectory}/{imageName}");
         Root data = JsonConvert.DeserializeObject<Root>(RoboFlowService.GetPrediction(imageName));
-        //Root data = JsonConvert.DeserializeObject<Root>("{\"time\":0.4760886690000916,\"image\":{\"width\":2848,\"height\":4272},\"predictions\":[{\"x\":1454.5,\"y\":2437.0,\"width\":2647.0,\"height\":2686.0,\"confidence\":0.8973177671432495,\"class\":\"Apple\"}]}");
-        GraphicsDrawable.GetData(data);
-        var graphicsView = this.pictureGraphicsView;
-        graphicsView.Invalidate();
+        foreach (var pred in data.predictions)
+        {
+            int id = 0;
+            switch (pred.@class)
+            {
+                case "Apple":
+                    id = Convert.ToInt16(Fruits.FruitID.Apple);
+                    break;
+                case "Pear":
+                    id = Convert.ToInt16(Fruits.FruitID.Pear);
+                    break;
+                case "Banana":
+                    id = Convert.ToInt16(Fruits.FruitID.Banana);
+                    break;
+                case "Kiwi":
+                    id = Convert.ToInt16(Fruits.FruitID.Kiwi);
+                    break;
+                case "Cutted_Kiwi":
+                    id = Convert.ToInt16(Fruits.FruitID.Cutted_Kiwi);
+                    break;
+                default:
+                    break;
+            }
+            if (!combinedPredictions.Contains(pred.@class))
+            {
+                combinedPredictions.Add($"{pred.@class}[{id}]");
+            }
+        }
+        fruitsList.ItemsSource = combinedPredictions;
     }
-
 }
