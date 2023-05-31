@@ -62,7 +62,7 @@ public partial class MainPage : ContentPage
                 default:
                     break;
             }
-            if (!combinedPredictions.Contains(pred.@class))
+            if (!combinedPredictions.Contains($"{pred.@class}[{id}]"))
             {
                 combinedPredictions.Add($"{pred.@class}[{id}]");
             }
